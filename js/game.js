@@ -161,6 +161,7 @@ function fullscreen(){
     } else {
         exitFullscreen(fullscreen);
     } 
+    
 }
 
 function enterFullscreen(fullscreen){

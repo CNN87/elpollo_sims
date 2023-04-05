@@ -47,7 +47,7 @@ class World {
             this.checkCollisionsWithBottle();
             this.checkThrowObjects();
             this.checkGameOver();
-        }, 150);
+        }, 60);
     }
 
     playSound(sound) {
