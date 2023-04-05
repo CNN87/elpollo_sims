@@ -120,10 +120,12 @@ class Character extends MoveableObject{
         } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
             this.playAnimation(this.IMAGES_WALKING);
             this.idleTimeout = 0;
+        } else if(this.world.keyboard.D){
+            this.idleTimeout = 0;
         } else if (this.notMoving()){
             this.playAnimation(this.IMAGES_IDLE);
             this.idleTimeout += 150;
-            if (this.idleTimeout >= 5000) {
+            if (this.idleTimeout >= 5000 ) {
               this.playAnimation(this.IMAGES_SLEEPING);
               this.world.playSound(this.sleeping_sound);
             }

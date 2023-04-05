@@ -112,8 +112,12 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 68){
         keyboard.D = false;
     }
+
     // console.log(e);
 });
+
+
+
 
 function start() {
     startgame();
@@ -154,32 +158,50 @@ function mute() {
 
 let fullscreenONOFF = false;
 
+// trigger ESCAPE in fullscreen not working
+
+// document.addEventListener('keydown', function(e) {
+//     if(e.key == "Escape"){
+//         fullscreen();
+//         fullscreenONOFF = false
+//     }
+// });
+
+window.addEventListener("keydown", (e) => {
+    if(e.key === "Escape" && fullscreenONOFF == true){
+        e.preventDefault();
+        fullscreen();
+        // fullscreenONOFF = false;
+        // exitfullscreenmode();
+   };
+});
+
 function fullscreen(){
-    let fullscreen = document.getElementById("game");
+    let fullscreenn = document.getElementById("game");
     if(fullscreenONOFF == false){
-        enterFullscreen(fullscreen);
+        enterFullscreen(fullscreenn);
     } else {
-        exitFullscreen(fullscreen);
+        exitFullscreen(fullscreenn);
     } 
-    
 }
 
-function enterFullscreen(fullscreen){
-    if (fullscreen.requestFullscreen) {
-        fullscreen.requestFullscreen();
+
+function enterFullscreen(fullscreenn){
+    if (fullscreenn.requestFullscreen) {
+        fullscreenn.requestFullscreen();
         
-    } else if (fullscreen.msRequestFullscreen){
-        fullscreen.msRequestFullscreen();
-    } else if (fullscreen.webkitRequestFullscreen) {
-        fullscreen.webkitRequestFullscreen();
+    } else if (fullscreenn.msRequestFullscreen){
+        fullscreenn.msRequestFullscreen();
+    } else if (fullscreenn.webkitRequestFullscreen) {
+        fullscreenn.webkitRequestFullscreen();
     }
     fullscreenmode();
     fullscreenONOFF = true;
 }
 
-function exitFullscreen(fullscreen) {
+function exitFullscreen(fullscreenn) {
     if (document.exitFullscreen){
-        document.exitFullscreen(fullscreen);
+        document.exitFullscreen(fullscreenn);
     } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
     }
@@ -223,9 +245,4 @@ function closeHelp(){
     help = document.getElementById("help");
     help.classList.add("dnone");
 }
-
-// function soundplay(){
-//     var myAudio = document.getElementById('game');
-//     myAudio.muted = !myAudio.muted;
-// }
 
