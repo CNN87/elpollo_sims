@@ -171,6 +171,8 @@ window.addEventListener("keydown", (e) => {
     if(e.key === "Escape" && fullscreenONOFF == true){
         e.preventDefault();
         fullscreen();
+        fsgame = document.getElementById("game");
+        fsgame.classList.remove("fullscreenmode");
         // fullscreenONOFF = false;
         // exitfullscreenmode();
    };
